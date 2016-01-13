@@ -1,24 +1,19 @@
-function [ pmf ] = binomial_pdf( input_vector, sample_size, p_success )
+function [ pmf ] = geometric_pdf( input_vector, p_success )
 %--------------------------------------------------------------------------
-% FUNCTION: binomial_pdf
+% FUNCTION: geometric_pdf
 %--------------------------------------------------------------------------
 %
-% DESCRIPTION: Calculate the pmf using a binomial distribution.
+% DESCRIPTION: Calculate the pmf using a geometric distribution.
 %
 % INPUT: 
 %   input_vector    Vector
-%   sample_size     Scalar
-%   mean            Scalar
+%   p_success       Scalar
 %
 % OUTPUT:
 %   pmf             Vector
 %
 %--------------------------------------------------------------------------
-i = 1
-for x = input_vector
-    pmf(i) = nchoosek(sample_size, x) * p_success .^ x * (1 - p_success) .^(sample_size - x)
-    i = i + 1
-end
+pmf = ( 1 - p_success ) .^ (input_vector - 1) * p_success
 %--------------------------------------------------------------------------
 % END OF FUNCTION
 %--------------------------------------------------------------------------

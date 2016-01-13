@@ -1,24 +1,23 @@
-function [ pmf ] = binomial_pdf( input_vector, sample_size, p_success )
+function [ pmf ] = normal_pdf( input_vector, mean, standard_deviation )
 %--------------------------------------------------------------------------
-% FUNCTION: binomial_pdf
+% FUNCTION: normal_pdf
 %--------------------------------------------------------------------------
 %
-% DESCRIPTION: Calculate the pmf using a binomial distribution.
+% DESCRIPTION: Calculate the pmf using a normal distribution.
 %
 % INPUT: 
-%   input_vector    Vector
-%   sample_size     Scalar
-%   mean            Scalar
+%   input_vector        Vector
+%   mean                Scalar
+%   standard_deviation  Scalar
 %
 % OUTPUT:
-%   pmf             Vector
+%   pmf                 Vector
 %
 %--------------------------------------------------------------------------
-i = 1
-for x = input_vector
-    pmf(i) = nchoosek(sample_size, x) * p_success .^ x * (1 - p_success) .^(sample_size - x)
-    i = i + 1
-end
+
+pmf = 1 ./ sqrt( 2 * pi * standard_deviation ) * exp( ...
+    -1 / 2 * ( ( input_vector - mean ) ./ sqrt(standard_deviation) ) .^ 2 )
+
 %--------------------------------------------------------------------------
 % END OF FUNCTION
 %--------------------------------------------------------------------------
