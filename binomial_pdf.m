@@ -14,10 +14,11 @@ function [ pmf ] = binomial_pdf( input_vector, sample_size, p_success )
 %   pmf             Vector
 %
 %--------------------------------------------------------------------------
-i = 1
+i = 1;
 for x = input_vector
-    pmf(i) = nchoosek(sample_size, x) * p_success .^ x * (1 - p_success) .^(sample_size - x)
-    i = i + 1
+    pmf(i) = nchoosek(sample_size, x) * p_success .^ x ...
+           * (1 - p_success ) .^(sample_size - x);
+    i = i + 1;
 end
 %--------------------------------------------------------------------------
 % END OF FUNCTION

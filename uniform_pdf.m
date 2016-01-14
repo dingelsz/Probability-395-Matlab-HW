@@ -15,24 +15,27 @@ function [ pmf ] = uniform_pdf( input_vector, lower_bound, upper_bound )
 %
 %--------------------------------------------------------------------------
 % Bounds check!
-a = lower_bound
-b = upper_bound
+a = lower_bound;
+b = upper_bound;
 if upper_bound < lower_bound
-    a = upper_bound
-    b = lower_bound
+    a = upper_bound;
+    b = lower_bound;
 end
 
-% Save the value instead of computing it every time it's needed
-value = 1 ./ ( b - a ) 
+% Preallocate the pmf variable
+pmf = zeros( 1, length( input_vector ) );
 
-i = 1
+% Save the value instead of computing it every time it's needed
+value = 1 ./ ( b - a ); 
+
+i = 1;
 for elem = input_vector
-   if elem > a & elem < b
-       pmf(i) = value
+   if elem > a && elem < b
+       pmf(i) = value;
    else
-       pmf(i) = 0
+       pmf(i) = 0;
    end
-   i = i + 1
+   i = i + 1;
 end
 %--------------------------------------------------------------------------
 % END OF FUNCTION
