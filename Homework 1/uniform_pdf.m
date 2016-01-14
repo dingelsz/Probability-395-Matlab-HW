@@ -28,6 +28,7 @@ pmf = zeros( 1, length( input_vector ) );
 % Save the value instead of computing it every time it's needed
 value = 1 ./ ( b - a ); 
 
+% Remove any values are outside of the bounds then change them to 0
 i = 1;
 for elem = input_vector
    if elem > a && elem < b
